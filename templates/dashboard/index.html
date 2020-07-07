@@ -7,16 +7,22 @@
       <div class="card-header">
         Movies with People inside
       </div>
-      <ul class="list-group list-group-flush">
-        {% for film in films_list %}
-          <li class="list-group-item p-3 mb-2 bg-primary text-white">{{ film.title }}</li>
-          <ul class="list-group list-group-flush inner">
-            {% for person in film.people %}
-              <li class="list-group-item"> {{ person.name }} </li>
-            {% endfor %}
-          </ul>
-        {% endfor %}
-      </ul>
+
+      {% if error %}
+        <p> {{ error }} </p>
+      {% else %}
+        <ul class="list-group list-group-flush">
+          {% for film in films_list %}
+            <li class="list-group-item p-3 mb-2 bg-primary text-white">{{ film.title }}</li>
+            <ul class="list-group list-group-flush inner">
+              {% for person in film.people %}
+                <li class="list-group-item"> {{ person.name }} </li>
+              {% endfor %}
+            </ul>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
     </div>
   </div>
   <style>

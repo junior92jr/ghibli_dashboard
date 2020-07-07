@@ -43,20 +43,26 @@ class DataManger:
 
         movie_map = {}
         client_guibli = ClientGhibli()
+
         people_list = client_guibli.get_from_api_or_cache(
-            endpoint_key='people', cache_timeout=60).get('data')
+            endpoint_key='people', cache_timeout=60)
         films_list = client_guibli.get_from_api_or_cache(
-            endpoint_key='films', cache_timeout=60).get('data')
+            endpoint_key='films', cache_timeout=60)
 
-        self.match_people_in_movies(people_list, movie_map)
 
-        for item in films_list:
+        if people_list.get('data') and films_list.get('data'):
+            people_list = people_list.get('data')
+            films_list = films_list.get('data')
 
-            item.update(
-                {
-                    'people': movie_map[
-                        item.get('id')] if item.get('id') in movie_map else []
-                }
-            )
+            self.match_people_in_movies(people_list, movie_map)
 
-        return films_list
+            for item in films_list:
+
+                item.update(
+                    {
+                        'people': movie_map[
+                            item.get('id')] if item.get('id') in movie_map else []
+                    }
+                )
+
+            return films_list
