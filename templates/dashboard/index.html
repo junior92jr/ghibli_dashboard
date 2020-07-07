@@ -1,0 +1,28 @@
+<!-- base.html -->
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+  <div class="col-md-6 col-auto">
+    <div class="card">
+      <div class="card-header">
+        Movies with People inside
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for film in films_list %}
+          <li class="list-group-item p-3 mb-2 bg-primary text-white">{{ film.title }}</li>
+          <ul class="list-group list-group-flush inner">
+            {% for person in film.people %}
+              <li class="list-group-item"> {{ person.name }} </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <style>
+    .list-group.inner li{
+    border:none;
+    
+    }
+  </style>
+{% endblock content %}
