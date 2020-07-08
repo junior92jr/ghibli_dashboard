@@ -6,7 +6,7 @@ from django.test import TestCase
 from client_ghibli.client import ClientGhibli
 from client_ghibli.mocks import MockClientGhibli
 
-from .utils import DataManger
+from .utils import DataManager
 
 
 class DashboardTest(TestCase):
@@ -16,7 +16,7 @@ class DashboardTest(TestCase):
         MockClientGhibli.get_from_api_or_cache)
     def test_success_response(self):
 
-        manager = DataManger()
+        manager = DataManager()
 
         response = manager.get_dashboard_data()
 

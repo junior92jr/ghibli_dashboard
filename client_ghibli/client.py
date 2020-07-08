@@ -57,8 +57,6 @@ class ClientGhibli:
 
         return response
 
-
-
     def get_from_api_or_cache(
         self, endpoint_key, raise_exception=False, cache_timeout=0, **kwargs):
         """

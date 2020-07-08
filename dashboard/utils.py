@@ -1,7 +1,7 @@
 from client_ghibli.client import ClientGhibli
 
 
-class DataManger:
+class DataManager:
     """
     Data Manager class that handles the Dashboard data.
     """

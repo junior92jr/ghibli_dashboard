@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .utils import DataManger
+from .utils import DataManager
 
 
 def index(request):
@@ -8,7 +8,7 @@ def index(request):
     Index View that handles the data to be displayed.
     """
 
-    manager = DataManger()
+    manager = DataManager()
 
     films_list = manager.get_dashboard_data()
 
