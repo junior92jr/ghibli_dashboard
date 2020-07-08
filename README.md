@@ -63,6 +63,14 @@ Once you have everything ok, you can run the project.
 (sennder) $ ./manage.py runserver
 ```
 
+In localhost just go to:
+
+```
+http://127.0.0.1:8000/movies/
+```
+
+The movies are in blue background, the people is inside in white background.
+
 ### Run tests
 
 

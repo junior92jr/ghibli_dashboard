@@ -16,7 +16,6 @@ logger = logging.getLogger(__name__)
 
 
 class ClientGhibli:
-
     """
     Client for Ghibli API.
     """
@@ -78,6 +77,8 @@ class ClientGhibli:
             films_endpoint=STUDIOGHIBLI_ENDPOINTS[endpoint_key]
         )
 
+        # TODO: Using kwargs for hanlding query params.
+
         cache_key = 'client_ghibli_get_{endpoint_key}_{sha1_key}'.format(
             endpoint_key=endpoint_key, 
             sha1_key=hashlib.sha1(url.encode('utf-8')).hexdigest())
@@ -92,6 +93,7 @@ class ClientGhibli:
                     cache.set(cache_key, response, cache_timeout)
         
         except Exception as err:
+            # TODO: Improving error handling for API.
             logger.error('Error with the endpoint')
             if raise_exception:
                 raise err
